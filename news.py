@@ -18,7 +18,7 @@ class Log:
         result = self.get_query(query)
         print(task)
         for i in range(len(result)):
-            print i + 1, result[i][0], result[i][1], suffix
+            print (i + 1, result[i][0], result[i][1], suffix)
 
     def exit(self):
         self.db.close()
