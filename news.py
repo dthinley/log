@@ -2,6 +2,7 @@
 
 import psycopg2
 
+
 class Log:
     def __init__(self):
         try:
@@ -18,10 +19,11 @@ class Log:
         result = self.get_query(query)
         print(task)
         for i in range(len(result)):
-            print (i + 1, result[i][0], result[i][1], suffix)
+            print(i + 1, result[i][0], result[i][1], suffix)
 
     def exit(self):
         self.db.close()
+
 
 # First Task
 task_1 = 'Q 1. What are the most popular three articles of all time?'
