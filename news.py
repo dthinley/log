@@ -2,7 +2,6 @@
 
 import psycopg2
 
-
 class Log:
     def __init__(self):
         try:
