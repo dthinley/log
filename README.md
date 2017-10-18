@@ -32,5 +32,5 @@ psql -d news -f newsdata.sql;
 ```
 ## To get data, or running queries use following cmd line:
 ```
-$; python news.py
+$; python3 news.py
 ```
