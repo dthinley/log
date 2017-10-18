@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import psycopg2
 
@@ -19,7 +19,7 @@ class Log:
         result = self.get_query(query)
         print(task)
         for i in range(len(result)):
-            print(i + 1, result[i][0], result[i][1], suffix)
+            print(i + 1, '.', result[i][0], '-', result[i][1], suffix)
 
     def exit(self):
         self.db.close()
@@ -37,26 +37,26 @@ query_1 = ("""SELECT title, count(path) FROM articles, log
 # Second Task
 task_2 = 'Q 2. Who are the most popular article authors of all time?'
 query_2 = ("""SELECT authors.name, COUNT(*)
-                FROM articles INNER JOIN authors ON articles.author = authors.id
-                INNER JOIN log ON CONCAT('/article/', articles.slug) = log.path
+                FROM articles INNER JOIN authors ON articles.author=authors.id
+                INNER JOIN log ON CONCAT('/article/', articles.slug)=log.path
                 WHERE  log.status LIKE '200%'
                 GROUP BY authors.name
                 ORDER BY COUNT(log.path) DESC
                 """)
 # Third Task
 task_3 = 'Q 3. On which days did more than 1% of requests lead to errors?'
-query_3 = ("""SELECT date, rate
-                FROM (SELECT to_char(TIME, 'Mon DD, YYYY') AS date,
-                round(cast(100*sum(CASE WHEN status!='200 OK' THEN 1 
+query_3 = (("""SELECT to_char(date, 'Mon DD, YYYY') as date, rate
+                FROM (select date(time) as date,
+                round(cast(100*sum(CASE WHEN status!='200 OK' THEN 1
                 ELSE 0
                 END)::float/sum(CASE
-                WHEN status='200 OK' THEN 1
+                WHEN status!='%404%' THEN 1
                 ELSE 0
-                END) AS numeric), 1) AS rate
+                END) AS numeric), 2) AS rate
                 FROM log
                 GROUP BY date) AS err
                 WHERE rate>1
-                """)
+                """))
 
 # Result and print out
 if __name__ == '__main__':
