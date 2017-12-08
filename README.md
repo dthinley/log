@@ -1,6 +1,5 @@
-# Log Analysis
+## Log Analysis
 
-## Introduction
 This project is about creating reporting tools in python. This reporting tool will run from the command line using Gitbash. It won't take any input from the user. Instead, it will connect to the database, use SQL queries to analyze the log data, and print out the answers to following questions.
 
 1.	What are the most popular three articles of all time? 
