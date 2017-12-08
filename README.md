@@ -1,11 +1,13 @@
-# Project name : Log Analysis
+# Log Analysis
 
 ## Introduction
 This project is about creating reporting tools in python. This reporting tool will run from the command line using Gitbash. It won't take any input from the user. Instead, it will connect to the database, use SQL queries to analyze the log data, and print out the answers to following questions.
+
 1.	What are the most popular three articles of all time? 
 2.	Who are the most popular article authors of all time? 
 3.	On which days did more than 1% of requests lead to errors? 
-## Requirements
+
+## Requirements 
 1. Python 2 and up
 2. Vagrant
 3. VirtualBox
